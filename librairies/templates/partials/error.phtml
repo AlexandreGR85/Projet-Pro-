@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, width=device-width" />
+	<link rel="stylesheet" href="css/fonts.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Histori-Quiz</title>
+</head>
+
+<body id="top">
+    <main class="container">
+	    <h1>Une erreur est survenue !</h1>
+		<p>Une erreur est survenue, merci de vous reconnecter plus tard ou de contacter un administrateur.</p>
+		<h3>Détails de l'erreur</h3>
+		<p>N'hésitez pas à fournir le code d'erreur et le message suivant à l'administrateur :</p>
+		<p><strong>Code : </strong> <?= $tplVars["code"];?></p>
+		<p><strong>Message : </strong><em><?= $tplVars["message"];?></em></p>
+		<a href="index.php">Retour à l'accueil du site</a>
+	</main>
+</body>
+</html>

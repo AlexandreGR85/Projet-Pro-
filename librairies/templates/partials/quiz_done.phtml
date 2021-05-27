@@ -1,0 +1,40 @@
+
+ <main class="container_quiz_show">
+
+	<section class="section_quiz_show" id="anchor">
+
+		<?php if ($tplVars['quizDones']): ?>
+		    <?php foreach($tplVars['quizDones'] as $quizDone): ?>
+			<article class="article_quiz_show">
+				<?php foreach($tplVars['quizPeriods'] as $quizPeriod): ?>
+					<?php if ($quizDone['Topics_ID'] == $quizPeriod['ID'] ): ?>
+						<h1><?= htmlspecialchars($quizPeriod['Name']); ?></h1>
+						<h2><?= htmlspecialchars($quizDone['Entitle']); ?></h2>
+						<p class="date">( Test du <?= htmlspecialchars($quizDone['QuizDate']); ?> )</p>
+						<img id='topics' alt="image topics" src="<?= $tplVars['WWW_URL']; ?>uploads/quizImg/<?= htmlspecialchars($quizDone['Img']);?>">
+						<div class="account">
+						    <p>Score obtenu : <?= htmlspecialchars($quizDone['Score']); ?></p>
+						</div>
+						<div class="evaluation">
+							<p class="underline">Appréciation du prof :</p> 
+							<p class="comment"> <?= \Session::getFirstName();?> <?= htmlspecialchars($quizDone['Valuation']); ?> </p>
+						</div>
+						<a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=QuizTry&task=index&pid=<?= intval(htmlspecialchars($quizPeriod['pid'])); ?>&tid=<?= intval($quizDone['Topics_ID']);?>&question=0" class="details">Tenter à nouveau ce Quiz</a>
+					<?php endif;?>
+				<?php endforeach; ?>
+			
+			</article>
+			<?php endforeach; ?>
+			<?php
+			else:
+			?>
+			<div class="displayColumn center">
+			  <p class="margin">Vous n'avez encore effectué aucun quiz. N'hésitez pas à allez voir nos quiz :</p>
+			  <a class="button margin" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=AllQuizShow&task=index">voir tous les quiz</a>
+			</div>
+		<?php endif;?>
+         
+    </section>
+
+</main>
+

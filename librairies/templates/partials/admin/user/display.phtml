@@ -1,0 +1,35 @@
+<div class="display-section">
+		
+    <table>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th class='thDisplay'>E-mail</th>
+            <th class='thDisplay'>Administrateur</th>
+            <th>Action</th>
+        </tr>
+        
+        <?php foreach($tplVars['lists'] as $list): ?>
+        <tr>
+            <td><?= htmlspecialchars($list['FirstName']); ?></td>
+            <td><?= htmlspecialchars($list['LastName']); ?></td>
+            <td class='thDisplay'><?= htmlspecialchars($list['Email']); ?></td>
+            <td class='thDisplay'>
+                 <?php if($list['Admin'] == 1) : ?>
+                 Oui
+                 <?php else : ?>
+                 Non
+                 <?php endif;?>
+            </td>
+            <td>
+                <div class='tdbtn'>
+                    <a class="admin-button " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=editForm&id=<?= intval($list['ID']);?>">Modifier</a>
+                    <a class="admin-button admin-button-delete " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=delete&id=<?= intval($list['ID']);?>">Supprimer</a></td>
+                </div>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    
+</div>
+

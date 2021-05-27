@@ -1,0 +1,35 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=update" method="POST">
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+
+    <fieldset class="form-column">
+      
+    
+        <div class="hide">
+            <input class="form-input" type="number" class="form-control"  name="id" value="<?= htmlspecialchars($tplVars['form']['ID']); ?>">
+            <input class="form-input" type="number" class="form-control"  name="tid" value="<?= htmlspecialchars($tplVars['form']['Topics_ID']); ?>">
+            <input class="form-input" type="number" class="form-control"  name="pid" value="<?= htmlspecialchars($tplVars['form']['Periods_ID']); ?>">
+
+            
+        </div >
+       
+        <div class="form-row">
+            <label for="entitle">Intitullé de la Question :</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="entitle" value="<?= htmlspecialchars($tplVars['form']['Entitle']); ?>">
+        </div>
+        
+        
+        
+       <div class="form-row">
+            <label for="img">Nom de l'Image</label>
+            <input class="form-input" type="text" class="form-control" id="img" name="pictures" value="<?= htmlspecialchars($tplVars['form']['Pictures']); ?>">
+        </div>
+            <div class="button-group">
+                <input type="submit" value="Valider" />
+                <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index&pid=<?= htmlspecialchars($tplVars['form']['Periods_ID']); ?>&tid=<?= htmlspecialchars($tplVars['form']['Topics_ID']); ?>" >Annuler</a>
+
+            </div>
+        
+    </fieldset>
+    
+
+</form>

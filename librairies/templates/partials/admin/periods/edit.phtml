@@ -1,0 +1,32 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=update" method="POST">
+    <input type="hidden" name="id" value="<?= intval($_GET['id']); ?>" />
+    <!--<input type="hidden" name="MAX_FILE_SIZE" value="30000" />-->
+
+    <fieldset class="form-column">
+        <div class="form-row">
+            <label for="name">Titre</label>
+            <input class="form-input" type="text" class="form-control" id="name" name="name" value="<?= htmlspecialchars($tplVars['form']['Name']); ?>">
+            
+        </div>
+        <div class="form-row">
+            <label for="img">Image</label>
+            <input class="form-input" type="text" class="form-control" id="img" name="img" value="<?= htmlspecialchars($tplVars['form']['Img']); ?>">
+           
+        </div>
+        <div class="form-column">
+            <label for="name">Description</label>
+            <textarea class="form-textarea" id="description" name="description">
+                <?= htmlspecialchars($tplVars['form']['Description']); ?>
+            </textarea> 
+       
+        </div>
+            <div class="button-group">
+                <button>Enregistrer</button>
+                <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index">Annuler</a>
+
+            </div>
+        
+    </fieldset>
+    
+
+</form>

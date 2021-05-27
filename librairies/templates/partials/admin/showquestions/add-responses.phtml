@@ -1,0 +1,51 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=createResponses" method="POST">
+
+  <fieldset class="form-column">
+        <legend><?= htmlspecialchars($tplVars['newQuestionEntitle']); ?></legend>
+      
+            <input class="hide" type="number" class="form-control" name="qid" value="<?= htmlspecialchars($tplVars['new']['ID']); ?>">
+             <input class="hide" type="number" class="form-control" name="pid" value="<?= htmlspecialchars($tplVars['newQuestionPid']); ?>">
+              <input class="hide" type="number" class="form-control" name="tid" value="<?= htmlspecialchars($tplVars['newQuestionTid']); ?>">
+        
+        <div class="form-row">
+            <label for="entitle">Réponse 1</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="response1" value="">
+        </div>
+        <div class="form-row">
+            <label for="entitle">Réponse 2</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="response2" value="">
+        </div>
+        <div class="form-row">
+            <label for="entitle">Réponse 3</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="response3" value="">
+        </div>
+        <div class="form-row">
+            <label for="entitle">Réponse 4</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="response4" value="">
+        </div>
+        
+        <div class="form-column">
+        <label for="correctAnswer">Bonne réponse:</label>
+
+        <select name="correctAnswer" id="correctAnswer">
+            <option value="">--Choissisez la bonne réponse--</option>
+            <option value="response1">Réponse 1</option>
+            <option value="response2">Réponse 2</option>
+            <option value="response3">Réponse 3</option>
+            <option value="response4">Réponse 4</option>
+           
+        </select>
+         </div class="form-row">
+         
+            <div class="button-group">
+                <button>Enregistrer</button>
+                <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index">Annuler</a>
+
+            </div>
+        
+    </fieldset>
+    
+    
+
+</form>
+

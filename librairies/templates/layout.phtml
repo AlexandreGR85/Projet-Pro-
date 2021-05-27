@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, width=device-width" />
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="shortcut icon" type="image/png" href="images/logoquiz1.svg"/>
+	<title>Histori-Quiz</title>
+</head>
+
+    <!--***************************************************************************************-->
+<body>
+
+	<!--******************************* HEADER ********************************************************-->
+	<header class="header maintheme">
+		
+		<!--*********************************affichage des messages******************************************************-->
+		<?php if (\Session::hasFlashes('error')): ?>
+		<div class="account-message">
+	        <div  id='currentMessage' class="message message-element message-error ok">
+	            <div class="text">
+	                <?php foreach (\Session::getFlashes('error') as $message): ?>
+						<p><?=$message?></p>
+					<?php endforeach?>
+	            </div>
+	        </div>
+	    </div>
+		<?php endif?>
+
+		<?php if (\Session::hasFlashes('success')): ?>
+		<div id='successMessage' class="account-message">
+	        <div class="message message-element message-success ok">
+	            <div class="text">
+	                <?php foreach (\Session::getFlashes('success') as $message): ?>
+						<p><?=$message?></p>
+					<?php endforeach?>
+	            </div>
+	        </div>
+	    </div>
+		<?php endif?>
+	    <!--***************************************************************************************-->
+	    
+	    <div class='account'>
+				<?php
+				//si je suis connecté, j'affiche pseudo + bouton de déconnexion
+				//sinon j'affiche le bouton de connexion
+				if (\Session::isConnected()):
+				?>
+				
+				<div class="connect-display connect-display-layout">
+					<p>Bonjour <?= \Session::getFirstName();?></p>
+					<a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=user&task=out">Déconnexion</a>
+				</div>
+				<div id='UserId' class='hide'><?= \Session::getId();?></div>
+				<?php
+				else:
+				?>
+				<div class="connect-display connect-display-layout">
+					<a href="#modalCount" class="accountButton"><p>Mon Compte</p></a>
+					<div id='UserId' class='hide'>0</div>
+				</div>
+				<?php 
+				endif;
+				?>
+			</div>
+	    
+	    
+	     <!--***************************************************************************************-->
+	    
+	    
+	    
+	 
+	    <div class="logotitle">
+	        <a href="index.php">
+    		    <img alt="logo" src="images/logoquiz1.svg">
+    			<p>Histori-Quiz</p>
+			</a>
+		</div>
+	    
+		<nav>
+			<ul>
+				<li class="menu menuEvolution"><a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=AllQuizShow&task=index">Tous nos quiz</a>
+					
+				</li>
+				<li class="menu menuEvolution"><a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Home&task=periods">Par périodes</a>
+					<ul class="widthEvolution evolutionLaptop widthConnected">
+						<!-- Boucle sur les périodes (préhistoire, antiquité, moyen-age, temps modernes, periode contemporaine) -->
+						<?php foreach($tplVars['periods'] as $period): ?>
+						<li><a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=QuizShow&task=index&pid=<?= intval($period['ID']);?>"><?= htmlspecialchars($period['Name']); ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+				<li class="menu menuEvolution"><a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=AllQuizShow&task=theme">Par thèmes</a>
+					<ul class="widthEvolution evolutionLaptop widthConnected">
+						<!-- Boucle sur les Thèmes (= topics) -->
+						<?php foreach($tplVars['menuTopics'] as $menuTopic): ?> 
+						<li><a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=QuizTry&task=index&pid=<?= intval($menuTopic['Periods_ID']);?>&tid=<?= intval($menuTopic['ID']);?>&question=0"><?= htmlspecialchars($menuTopic['Entitle']); ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+				
+				<?php
+				//si je suis connecté, j'affiche pseudo + bouton de déconnexion
+				//sinon j'affiche le bouton de connexion
+				if (\Session::isConnected()):
+				?>
+				<li class="menu menuEvolution" id="myQuiz"><a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=AllQuizDone&task=index&uid=<?= \Session::getId();?>">Mes quiz</a>
+				
+				</li>
+				<?php 
+				endif;
+				?>
+			</ul>
+		</nav>
+	    
+	
+	</header>
+	
+	<!--******************************* MAIN PAGE HOME ********************************************************-->
+	
+	
+	<!--********************* affichage de la Modale au clique sur compte *************************************-->
+	<main class="container">
+		<aside id="modalCount" class="modal hide">
+			<div class="modalWrapper">
+				
+				<div>
+					<button id='close'>X Fermer</button>
+		    	</div>
+			    <form class="logForm" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=user&task=login" method="POST">
+			    	<h1>Mon compte</h1>
+			        <input id="token" type="hidden" name="token" value="" />
+			        <fieldset>
+			            <legend>Je suis déjà membre d'Histori-Quiz</legend>
+			            <div class="field">
+			                <label>Mon adresse email</label>
+			                <div class="value"><input name="email" type="text"></div>
+			            </div>
+			            <div class="field">
+			                <label>Mon mot de passe</label>
+			                <div class="value"><input name="password" type="password"></div>
+			            </div>
+			            <div class="field">
+			                <button>Se connecter</button>
+			            </div>
+			        </fieldset>
+			        <fieldset>
+			            <legend>Je ne suis pas encore membre, mais je veux arranger ça</legend>
+			            <div class="fieldCreate"><a href="#" class="button">Créer un compte</a></div>
+			        </fieldset>
+			    </form>
+			    
+			    <form class='createForm hide' action="<?= $tplVars['WWW_URL']; ?>index.php?controller=user&task=create" method="POST">
+			    	<h1>Création de compte</h1>
+			        <input id='tokenCreate' type="hidden" name="token" value="" />
+			        <fieldset>
+			            <div class="field">
+			                <label>Mon prénom</label>
+			                <div class="value"><input name="firstname" type="text"></div>
+			            </div>
+			            <div class="field">
+			                <label>Mon nom</label>
+			                <div class="value"><input name="lastname" type="text" required></div>
+			            </div>
+			            <div class="field">
+			                <label>Mon adresse email</label>
+			                <div class="value"><input name="email" type="text" required></div>
+			            </div>
+			            <div class="field">
+			                <label>Mon mot de passe</label>
+			                <div class="value"><input name="password" type="password" required></div>
+			            </div>
+			            <div class="field">
+			                <label>Re-saisir à nouveau</label>
+			                <div class="value"><input name="password2" type="password" required></div>
+			            </div>
+			            
+			            <div class="field">
+			                <button class="button">Valider</button>
+			            </div>
+			        </fieldset>
+			    </form>
+		    </div>
+	    </aside>
+		<!--**********************************************************************************************-->
+        
+        
+        <!--******************************Varriable qui contient les templates partiels*******************-->
+            
+        <?= $pageContent ?>
+        
+		<!--**********************************************************************************************-->
+    </main>
+	
+	
+	<!--******************************* FOOTER ********************************************************-->
+	
+
+	<footer class="footer">
+	    
+	    <div class="contact">
+	        <h2>Histori-Quiz</h2>
+	        <a href="index.php"><p>Accueil</p></a>
+	        <!--<a href='#'><p>Nous contacter</p></a>-->
+	    </div>
+	    <div class="social">
+	        <h2>Nous suivre</h2>
+	        <div class='footerDiv'>
+		        <a href='#'><i class="fab fa-facebook-square"></i></a>
+		        <a href='#'><i class="fab fa-twitter-square"></i></a>
+		        <a href='#'><i class="fab fa-instagram-square"></i></a>
+	        </div>
+	        
+	    </div>
+	    <div class="legal">
+	        <h2>Légal</h2>
+	        <a href='#'><p>Politique de confidentialité</p></a>
+	        <a href='#'><p>crédits</p></a>
+	    </div>
+	</footer>
+		
+	<script type="module" src="js/game.js"></script>
+	<script type="module" src="js/account.js"></script>
+	<script src="js/message.js"></script>
+</body>
+</html>

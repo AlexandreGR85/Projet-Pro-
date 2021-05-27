@@ -1,0 +1,29 @@
+<div class="display-section">
+    <table>
+        <tr>
+             <th>Titre</th>
+             <th>Image</th>
+             <th class='thDisplay'>Periods_ID</th>
+             <th>Action</th>
+         </tr>
+        
+        <?php foreach($tplVars['lists'] as $list): ?>
+            <tr>
+                 <td><?= htmlspecialchars($list['Entitle']); ?></td>
+                 <td><?= htmlspecialchars($list['Img']); ?></td>
+                 <td class='thDisplay'><?= htmlspecialchars($list['Periods_ID']); ?></td>
+                 <td>
+                    <div class='tdbtn'>
+                        <a class="admin-button " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=editFormPeriodName&id=<?= intval($list['ID']);?>">Modifier</a>
+                        <a class="admin-button admin-button-delete " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=delete&id=<?= intval($list['ID']);?>">Supprimer</a></td>
+                    </div>
+                 </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <div>
+        <a class="admin-button admin-button-add" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=newForm"> Ajouter un Thème</a>
+    </div>     
+</div>
+

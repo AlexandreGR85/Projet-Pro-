@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, width=device-width" />
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="shortcut icon" type="image/png" href="images/logoquizBack.gif"/>
+	<title>Histori-Quiz</title>
+</head>
+
+<body>
+    <!--******************************* ********************************************************-->
+	
+    <?php if (\Session::hasFlashes('error')): ?>
+		<div class="account-message">
+	        <div class="message message-element message-error ok">
+	            <div class="text">
+	                <?php foreach (\Session::getFlashes('error') as $message): ?>
+						<p><?=$message?></p>
+					<?php endforeach?>
+	            </div>
+	        </div>
+	    </div>
+		<?php endif?>
+
+    <?php if (\Session::hasFlashes('success')): ?>
+        <div class="alert-section">
+            <div class="alert alert-element alert-success is-active">
+               
+                <div class="text">
+                    <?php foreach (\Session::getFlashes('success') as $message): ?>
+        				<p><?=$message?></p>
+        			<?php endforeach?>
+                </div>
+            </div>
+        </div>
+    <?php endif?>
+
+        <div class="header admintheme">
+			<div class="logotitle">
+			        <a href="index.php">
+		    		    <img alt="logo" src="images/logoquiz1.svg">
+		    			<p>Histori-Quiz</p>
+					</a>
+			</div>
+		
+			<div class="name-title column">
+				<div class="account">
+					<div class="connect-display display-layout-admin">
+						<p>Bonjour <?= \Session::getFirstName();?></p>
+					</div>
+					<a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=user&task=out">Déconnexion</a>
+				</div>
+				<h1><?= $tplVars['page_title']; ?></h1>
+			</div>
+		</div>
+		<nav> 
+			<ul> 
+				<li class="menu menuBack"> 
+					<a  href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\Dashboard&task=index">Tableau de bord</a> 
+				</li> 
+				<li class="menu menuBack">Paramétrage des Quiz 
+					<ul> 
+						<li> 
+							<a  href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\Periods&task=index">Gestion des Périodes</a> 
+						</li> 
+						<li> 
+							<a  href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\Topics&task=index">Gestion des Thèmes</a> 
+						</li> 
+						<li> 
+							<a  href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\Questions&task=index">Gestion des Questions/Réponses</a> 
+						</li> 
+					</ul> 
+				</li> 
+				<li class="menu menuBack">
+					<a  href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\User&task=index">Gestion des utilisateurs</a> 
+				</li> 
+				<li class="menu menuBack"> 
+
+					<a  href="<?= $tplVars['WWW_URL']; ?>" target="_blank">Accéder au site</a> 
+
+				</li> 
+
+			</ul> 
+
+		</nav> 
+
+        
+        <!--***************************************************************************************-->
+ 
+    <div class="container-fluid">
+    	<div class="row">
+    		<main class='mainAdmin'>
+    		<!-- page content -->
+    		<?= $pageContent ?>
+    		<!-- page content -->
+    		</main>
+    	</div>
+    </div>
+</body>
+
+</html>

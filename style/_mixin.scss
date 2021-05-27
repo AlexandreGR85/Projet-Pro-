@@ -1,0 +1,20 @@
+@mixin element-absolute($z-index,$top,$right,$bottom,$left) {
+    position: absolute;
+    z-index: $z-index;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin element-hide($z-index) {
+    position: absolute;
+    z-index: $z-index;
+    display: none;
+}
+
+@mixin element-flex($direction, $align){
+    display: flex;
+    flex-direction : $direction;
+    align-items : $align;
+}

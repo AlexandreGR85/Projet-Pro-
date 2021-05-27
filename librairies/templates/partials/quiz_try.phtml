@@ -1,0 +1,74 @@
+<div class="section_article display sectionQuestion">
+        
+            
+            	
+            	<div id='switchQuestion' class="article articleQuestion switch switchQuestion">
+            	   
+        	   
+            	   <p id="totalQuestions" class="hide">3</p>
+            	    
+            	   <img class="imagequestion" alt="image question" src="<?= $tplVars['WWW_URL']; ?>uploads/quizImg/<?= htmlspecialchars($tplVars['questions']['Pictures']); ?>">
+            	   
+            	   <div class="display QuestionResponses">
+                	   <!-- Affichage de la question -->
+                    	<p id='questionEntitle' class="entitle"><?= htmlspecialchars($tplVars['questions']['Entitle']); ?></p>
+                    	<p id='pid' class='hide'><?= htmlspecialchars($tplVars['questions']['Periods_ID']); ?></p>
+                    	<p id='tid' class='hide'><?= htmlspecialchars($tplVars['questions']['Topics_ID']); ?></p>
+                    	<p id='questionNum' class='hide'><?= htmlspecialchars($tplVars['questionNum']); ?></p>
+                    
+                    	<!-- Affichage des propositions --> 
+                    	<div id="responses_choices" class="responses_choices display">
+                    	    
+                    	   <?php $i=0; foreach($tplVars['responses'] as $response): ?>
+                    	       <!-- intitulé de la proposition avec une class=0 si réponse fausse et class=1 si réponse vraie-->
+                    	        <p class="answer <?= $i++; ?> status<?= htmlspecialchars($response['RightAnswer']); ?> <?= htmlspecialchars($response['RightAnswer']); ?>"><?= htmlspecialchars($response['Proposal']); ?></p>
+                    	   <?php endforeach; ?>
+                    	</div>
+                    	
+                    
+                	</div>
+                	
+    	       </div>
+    	       
+    	       <div id='switchResult' class="article articleQuestion switch switchResult hide">
+                
+                <img class="imagequestion" alt="image" src="<?= $tplVars['WWW_URL']; ?>uploads/quizImg/<?= htmlspecialchars($tplVars['questions']['Pictures']); ?>">
+                <div id="score" class="below_article_try appreciation">
+                    <img id="happy_smiley" class="hide" src="images/happy_smiley.png" alt="sad smiley">
+                    <img id="sad_smiley" class="hide" src="images/sad_smiley.png" alt="sad smiley">
+            	    <div class='resultNext display'>
+    	
+                    	<!-- Affichage si réponse fausse -->
+                    	<div id="wrong" class="wrong hide resultEntitle">
+                    	    <p class="entitle">Mauvaise réponse ! </p>
+                        	<p class="entitle">La bonne réponse était : <span id='correctAnswerCorrection'></span></p>
+                    	</div>
+                    	
+                    	<!-- Affichage si réponse vraie --> 
+                    	<div id="right" class=" right hide resultEntitle">
+                        	    <p class="entitle">Bonne réponse ! </p>
+                            	<p class="entitle"> La réponse est bien : <span id='correctAnswerConfirmation'></span></p>
+                    	</div>
+                    	
+                    	<div id="next" >
+                    	    <p class="next">Question suivante</p>
+                	    </div>
+        	       </div>
+                </div>
+    	       
+            
+            </div>
+        
+      
+           <div class='article articleQuestion switch switchScore switchRightPosition'>
+                <img class='imageResult' id='pics' alt="image" src="uploads/quizImg/lorem.gif">
+                <div class='appreciation below_article_try'>
+                    <div id='appreciationText'></div>
+                    <div id='appreciation' class='hide'></div>
+                    <div id='displayScore'></div>
+                    <a id='otherQuiz' class='hide button-group button' href="<?= $tplVars['WWW_URL']; ?>index.php?controller=AllQuizShow&task=index">Continuer à jouer</a>
+                </div>
+            </div>
+
+</div>
+

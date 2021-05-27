@@ -1,0 +1,24 @@
+<div class="containerHome">
+	    
+		<div class="section_home">
+		    
+		    <?php foreach($tplVars["AllPeriods"] as $AllPeriod): ?>
+				
+		    <article class="article_main">
+			
+    			<h2><?= htmlspecialchars($AllPeriod["Name"]); ?></h2>
+    		
+    			<div class="below_article_home">
+    				
+        			<img class="img" alt="image" src="<?= $tplVars["WWW_URL"]; ?>uploads/quizImg/<?= htmlspecialchars($AllPeriod["Img"]);?>">
+        			<p><?= htmlspecialchars($AllPeriod["Description"]); ?></p>
+        			
+        		</div>
+        		<a href="<?= $tplVars["WWW_URL"]; ?>index.php?controller=QuizShow&task=index&pid=<?= intval($AllPeriod["ID"]);?>" class="details">Voir les Quiz</a>
+             </article>
+             <?php endforeach; ?>
+             
+		    
+	    </div>
+
+	</div>

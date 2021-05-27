@@ -1,0 +1,71 @@
+// ---------------------------------------
+// -------------COULEURS----------------
+// ---------------------------------------
+
+// ----couleurs principales---
+
+
+$main-theme-background : linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(42,117,255,1) 100%);
+$admin-theme-background : #808080;
+$main-theme-police : #474444;
+
+
+// ---couleurs accessoires---
+
+// --background color
+$accessory-theme-background : #2a75ff;
+$cart-theme-background : #00008B;
+
+$accessory-theme-admin-background : #eee;
+$accessory-gradient: linear-gradient(0deg, rgba(255,255,255,0.9981034650188201) 17%, rgba(221,162,241,1) 100%);
+$happy :#32dd60;
+$sad : #FE0400;
+$dark : #474444;
+
+// --police color
+$accessory-theme-police : #fff;
+
+
+// ---------------------------------------
+// -------------FONTS----------------
+// ---------------------------------------
+
+$main-title-font : 'Lobster', cursive;
+$main-font :'Roboto', sans-serif;
+$substitution-font : 'Open Sans', sans-serif;
+$manuscrite-font : 'Zeyada', sans-sherif;
+
+
+// ---------------------------------------
+// -------------POSITIONS/DIMENSIONS/BORDERS----------------
+// ---------------------------------------
+
+
+//paddings
+$no-padding: 0;
+$small-padding: 1rem;
+$average-padding : 2rem;
+$big-padding: 3rem;
+
+//margins
+$no-margin: 0;
+$small-margin: 1rem;
+$average-margin : 2rem;
+$big-margin: 3rem;
+$x-big-margin: 5rem;
+$xx-big-margin: 10rem;
+
+//--fonts-sizes
+$huge-font-size: 4rem;
+$average-font-size: 3rem;
+$small-font-size: 2rem;
+$xsmall-font-size: 1.5rem;
+
+// --radius
+$normal-border-radius: 0rem;
+$smooth-border-radius : 1rem;
+$average-border-radius: 2rem;
+$hard-border-radius : 4rem;
+$smiley-border-radius: 5rem;
+
+// --width/height

@@ -1,0 +1,34 @@
+
+	    
+		<section class="display-section">
+				
+			
+			
+			
+		    <table>
+		        
+		        <caption>Période : <?= htmlspecialchars($tplVars['PeriodTopics']['Name']); ?> / Thème : <?= htmlspecialchars($tplVars['PeriodTopics']['Entitle']); ?></caption>
+                 <tr>
+                     <th>Questions</th>
+                    
+                    
+                     <th>Actions sur la question</th>
+                 </tr>
+                 
+                 <?php foreach($tplVars['listsQuestions'] as $listsQuestion): ?>
+                 <tr>
+                     <td><?= htmlspecialchars($listsQuestion['Entitle']); ?></td>
+                    
+                     <td>
+                         <div class="form-row-topics">
+                             <a class="admin-button admin-button-delete " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=deleteQuestion&id=<?= htmlspecialchars(intval($listsQuestion['ID'])); ?>&pid=<?= htmlspecialchars($tplVars['PeriodTopics']['pid']); ?>&tid=<?= htmlspecialchars($tplVars['PeriodTopics']['tid']); ?>">Supprimer</a></td>
+                         </div>
+                     </td>
+                    
+                 </tr>
+                <?php endforeach;?>
+             </table>
+    
+		    
+	    </section>
+

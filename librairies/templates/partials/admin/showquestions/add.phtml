@@ -1,0 +1,35 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=create" method="POST">
+
+  <fieldset class="form-column">
+        <div class="form-row">
+            <label for="entitle">Question</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="entitle" value="">
+            
+        </div>
+        <div class="form-row">
+            <label for="entitle">Image</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="img" value="">
+            
+        </div>
+        <div class="hide">
+           
+            <input class="form-input" type="text" class="form-control" name="pid" value="<?= htmlspecialchars($tplVars['pid']); ?>">
+            
+        </div>
+        <div class="hide">
+            
+            <input class="form-input" type="text" class="form-control" name="tid" value="<?= htmlspecialchars($tplVars['tid']); ?>">
+            
+        </div>
+            <div class="button-group">
+                <button>Enregistrer</button>
+                <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index&pid=<?= htmlspecialchars($tplVars['pid']); ?>&tid=<?= htmlspecialchars($tplVars['tid']); ?>">Annuler</a>
+
+            </div>
+        
+    </fieldset>
+    
+    
+
+</form>
+

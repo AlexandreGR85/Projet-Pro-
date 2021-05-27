@@ -1,0 +1,27 @@
+
+	    
+		<section class="display-section">
+				
+			<?php foreach($tplVars['listsPeriods'] as $listsPeriod): ?>
+		    <table class='tableWidth'>
+		        
+                <tr>
+                    <th colspan=2><?= htmlspecialchars($listsPeriod['Name']); ?> <?= htmlspecialchars($listsPeriod['ID']); ?></th>
+                </tr>
+                
+                <?php foreach($tplVars['listsTopics'] as $listsTopic): ?>
+                    <?php if ($listsTopic['Periods_ID'] == $listsPeriod['ID']): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($listsTopic['Entitle']); ?></td>
+                            <td>
+                            <div class="form-row-topics">
+                                <a class="admin-button " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\ShowQuestions&task=index&pid=<?= htmlspecialchars($listsPeriod['ID']); ?>&tid=<?= htmlspecialchars($listsTopic['ID']); ?>">Voir les questions</a>
+                            </div>
+                            </td>
+                        </tr>
+                    <?php endif?>
+                <?php endforeach; ?>
+            </table>
+             <?php endforeach; ?>
+	    </section>
+

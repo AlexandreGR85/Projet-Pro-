@@ -1,0 +1,33 @@
+
+	    
+		<div class="display-section display-periods">
+				
+		    <table>
+         <tr>
+             <th>Titre</th>
+             <th class='thDisplay'>Image</th>
+             <th class='thDisplay'>Description</th>
+             <th>Action</th>
+         </tr>
+      
+          <?php foreach($tplVars['lists'] as $list): ?>
+         <tr>
+             <td><?= htmlspecialchars($list['Name']); ?></td>
+             <td class='thDisplay'><?= htmlspecialchars($list['Img']); ?></td>
+             <td class='thDisplay'><div class="th_description"><?= htmlspecialchars($list['Description']); ?></div></td>
+             <td class='tdbtn'>
+                <a class="admin-button " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=editForm&id=<?= intval($list['ID']);?>">Modifier</a>
+                <a class="admin-button admin-button-delete " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=delete&id=<?= intval($list['ID']);?>">Supprimer</a></td>
+
+             </td>
+         </tr>
+          <?php endforeach; ?>
+      </table>
+      
+      <div>
+        <a class="admin-button admin-button-add" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=newForm"> Ajouter une Période</a>
+      </div>     
+            
+		    
+	    </div>
+

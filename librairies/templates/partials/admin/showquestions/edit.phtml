@@ -1,0 +1,41 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=updateAnswer" method="POST">
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+
+    <fieldset class="form-column">
+      
+             
+        <p class="underline"><?= htmlspecialchars($tplVars['form']['Entitle']); ?></p>
+    
+        <div class="hide">
+            <input class="form-input" type="number" class="form-control"  name="id" value="<?= htmlspecialchars($tplVars['form']['ID']); ?>">
+            <input class="form-input" type="number" class="form-control"  name="pid" value="<?= htmlspecialchars($tplVars['form']['Periods_ID']); ?>">
+            <input class="form-input" type="number" class="form-control"  name="tid" value="<?= htmlspecialchars($tplVars['form']['Topics_ID']); ?>">
+            <input class="form-input" type="number" class="form-control"  name="qid" value="<?= htmlspecialchars($tplVars['form']['Questions_ID']); ?>">
+        </div>
+       
+        <div class="form-row">
+            <label for="proposal">Proposition :</label>
+            <input class="form-input" type="text" class="form-control" id="proposal" name="proposal" value="<?= htmlspecialchars($tplVars['form']['Proposal']); ?>">
+        </div>
+        <div class="form-column">
+            
+            
+            <label class="margin" for="rightAnswer">Statut de la proposition : <?= htmlspecialchars($tplVars['form']['RightAnswer']); ?></label>
+    
+            <select  name="rightAnswer" id="rightAnswer">
+                <option>--Sélectionnez le nouveau statut--</option>
+                <option type="number" value="wrong">Réponse fausse</option>
+                <option type="number" value="true">Réponse vraie</option>
+            </select>
+       
+        </div>
+            <div class="button-group">
+                <input type="submit" value="Valider" />
+                <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index&pid=<?= htmlspecialchars($tplVars['form']['Periods_ID']); ?>&tid=<?= htmlspecialchars($tplVars['form']['Topics_ID']); ?>" >Annuler</a>
+
+            </div>
+        
+    </fieldset>
+    
+
+</form>

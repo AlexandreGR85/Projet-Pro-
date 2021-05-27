@@ -1,0 +1,38 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=update" method="POST">
+    <input type="hidden" name="id" value="<?= intval($_GET['id']); ?>" />
+    <!--<input type="hidden" name="MAX_FILE_SIZE" value="30000" />-->
+
+    <fieldset class="form-column">
+        
+        <div class="hide">
+            <input class="form-input" type="number" class="form-control" id="id" name="id" value="<?= htmlspecialchars($tplVars['form']['ID']); ?>">
+        </div>
+        <div class="form-row">
+            <label for="firstname">Prénom</label>
+            <input class="form-input" type="text" class="form-control" id="firstname" name="firstname" value="<?= htmlspecialchars($tplVars['form']['FirstName']); ?>">
+        </div>
+        <div class="form-row">
+            <label for="lastname">Nom</label>
+            <input class="form-input" type="text" class="form-control" id="lastname" name="lastname" value="<?= htmlspecialchars($tplVars['form']['LastName']); ?>">
+        </div>
+        <div class="form-row">
+            <label for="email">Email</label>
+            <input class="form-input" type="text" class="form-control" id="email" name="email" value="<?= htmlspecialchars($tplVars['form']['Email']); ?>">
+        </div>
+        <div>
+          <input type="checkbox" id="admin" name="admin" <?php if($tplVars['form']['Admin'] == 1) : ?>
+                 checked <?php endif;?> >
+          <label for="admin">Adminstrateur</label>
+        </div>
+        <div>
+          <input type="checkbox" id="notadmin" name="notadmin" <?php if($tplVars['form']['Admin'] == 0) : ?> checked <?php endif;?>>
+          <label for="notadmin">Pas administrateur</label>
+        </div>
+        <div class="button-group">
+            <input type="submit" value="Valider" />
+            <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index">Annuler</a>
+        </div>
+        
+    </fieldset>
+    
+</form>

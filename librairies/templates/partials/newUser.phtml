@@ -1,0 +1,35 @@
+<!-- New user content -->
+<section>
+    <h2>Créer mon compte</h2>
+    <form action="<?= $tplVars['WWW_URL']; ?>index.php?controller=user&task=create" method="POST">
+        <input type="hidden" name="token" value="<?= $tplVars['Token']; ?>" />
+        <fieldset>
+            <div class="field">
+                <label>Mon prénom</label>
+                <div class="value"><input name="firstname" type="text"></div>
+            </div>
+            <div class="field">
+                <label>Mon nom</label>
+                <div class="value"><input name="lastname" type="text" required></div>
+            </div>
+            <div class="field">
+                <label>Mon adresse email</label>
+                <div class="value"><input name="email" type="text" required></div>
+            </div>
+            <div class="field">
+                <label>Mon mot de passe</label>
+                <div class="value"><input name="password" type="password" required></div>
+            </div>
+            <div class="field">
+                <label>Re-saisir à nouveau</label>
+                <div class="value"><input name="password2" type="password" required></div>
+            </div>
+            
+            <div class="field">
+                <button class="button">Valider</button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+<!-- New user content -->

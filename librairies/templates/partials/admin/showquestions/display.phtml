@@ -1,0 +1,47 @@
+<div class="display-section">
+		
+	
+	
+	
+    <table>
+        <tr>
+             <th class='thDisplay'>Questions</th>
+            
+             <th>Propositions</th>
+            
+             <th>Actions sur la Proposition</th>
+        </tr>
+        
+        <?php foreach($tplVars['listsQuestionsResponses'] as $listsQuestionResponse): ?>
+            <tr>
+                 <td class='thDisplay'><?= htmlspecialchars($listsQuestionResponse['questionEntitle']); ?></td>
+                
+                 <td>
+                    <div class="form-row-topics">
+                     
+                     <?= htmlspecialchars($listsQuestionResponse['answersEntitle']); ?>
+                    </div>
+                 
+                 </td>
+            
+                 <td>
+                     <div class="directionDisplay">
+                         <a class="admin-button " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=editFormQuestionResponse&qid=<?= htmlspecialchars(intval($listsQuestionResponse['qid'])); ?>&rid=<?= htmlspecialchars(intval($listsQuestionResponse['aid'])); ?>">Modifier</a>
+                         
+                         <a class="admin-button admin-button-delete " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=delete&id=<?= htmlspecialchars(intval($listsQuestionResponse['aid'])); ?>&pid=<?= htmlspecialchars(intval($listsQuestionResponse['pid'])); ?>&tid=<?= htmlspecialchars(intval($listsQuestionResponse['tid'])); ?>">Supprimer</a>
+                     </div>
+                 </td>
+            </tr>
+        <?php endforeach;?>
+    </table>
+     
+      <div class="flexEvolution">
+        <a class="admin-button admin-button-add" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=newForm&pid=<?= htmlspecialchars($tplVars['PeriodTopics']['pid']); ?>&tid=<?= htmlspecialchars($tplVars['PeriodTopics']['tid']); ?>"> Ajouter une Question</a>
+        <a class="admin-button " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=displayQuestions&id=<?= htmlspecialchars(intval($listsQuestionResponse['aid'])); ?>&modify=1&pid=<?= htmlspecialchars($tplVars['PeriodTopics']['pid']); ?>&tid=<?= htmlspecialchars($tplVars['PeriodTopics']['tid']); ?>">Modifier une question</a></td>
+        <a class="admin-button admin-button-delete " href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=displayQuestions&pid=<?= htmlspecialchars($tplVars['PeriodTopics']['pid']); ?>&tid=<?= htmlspecialchars($tplVars['PeriodTopics']['tid']); ?>">Supprimer une question</a></td>
+      </div>     
+     
+
+    
+</div>
+

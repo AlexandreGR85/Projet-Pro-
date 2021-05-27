@@ -1,0 +1,31 @@
+<form enctype="multipart/form-data" action="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=update" method="POST">
+    <input type="hidden" name="id" value="<?= intval($_GET['id']); ?>" />
+    <!--<input type="hidden" name="MAX_FILE_SIZE" value="30000" />-->
+
+    <fieldset class="form-column">
+        <div class="form-row">
+            <label for="entitle">Titre</label>
+            <input class="form-input" type="text" class="form-control" id="entitle" name="entitle" value="<?= htmlspecialchars($tplVars['form']['Entitle']); ?>">
+            
+        </div>
+        <div class="form-row">
+            <label for="img">Image</label>
+            <input class="form-input" type="text" class="form-control" id="img" name="img" value="<?= htmlspecialchars($tplVars['form']['img']); ?>">
+           
+        </div>
+        <div class="form-row">
+			<label for="pet-select">Période</label>			
+            <select name="periods_name">
+               <?php foreach($tplVars['periods'] as $period): ?>
+               <option valeur="<?= htmlspecialchars($period['ID']); ?>"><?= htmlspecialchars($period['Name']); ?></option>
+               <?php endforeach; ?>
+            </select>
+        </div>
+        
+        <p>( <?= htmlspecialchars($tplVars['form']['Entitle']); ?> actuellement rattaché à <?= htmlspecialchars($tplVars['form']['Name']); ?> )</p>
+        <div class="button-group">
+            <button>Enregistrer</button>
+            <a class="button btn-cancel" href="<?= $tplVars['WWW_URL']; ?>index.php?controller=Admin\<?= $tplVars['crud'];?>&task=index">Annuler</a>
+        </div>
+    </fieldset>
+</form>

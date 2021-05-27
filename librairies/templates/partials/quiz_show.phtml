@@ -1,0 +1,17 @@
+	<div class="container_quiz_show">
+	    <div class="maintitle" >
+    	    <h2><?= htmlspecialchars($tplVars['period_name']); ?></h2>
+	    </div>
+		<div class="section_quiz_show">
+		    
+		    <?php foreach($tplVars['topics'] as $topic): ?>
+		    <article class="article_quiz_show">
+    			<h3><?= htmlspecialchars($topic['Entitle']); ?></h3>
+        		<img alt="image" src="<?= $tplVars['WWW_URL']; ?>uploads/quizImg/<?= htmlspecialchars($topic['Img']);?>">
+        		<a href="<?= $tplVars['WWW_URL']; ?>index.php?controller=QuizTry&task=index&pid=<?= intval($topic['Periods_ID']);?>&tid=<?= intval($topic['ID']);?>&question=0" class="details">Lancer le Quiz</a>
+             </article>
+             <?php endforeach; ?>
+             
+	    </div>
+
+	</div>
